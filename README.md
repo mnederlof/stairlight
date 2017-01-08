@@ -29,7 +29,9 @@ code to allow ledstrips to fade in and out on movement on the stairs
 + more cables
 
 ### Wiring
-To be added later
+connect the ledstrips to your raspberry like the tutorial here: http://popoklopsi.github.io/RaspberryPi-LedStrip/#!/
+i did this seperate for ever step
+To be expanded later
 
 ### Explanation
 
