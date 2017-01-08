@@ -8,7 +8,7 @@ code to allow ledstrips to fade in and out on movement on the stairs
 1. adjust gpio ports and prefered colors in variables.py
 1. install scripts
 1. add check.sh to crontab
-1. walk down the stairs  
+1. walk down the stairs (or up if you are coding in the basement)
 
 ### Software Requirements:
 + python 2.7
