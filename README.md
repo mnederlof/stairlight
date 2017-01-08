@@ -5,8 +5,17 @@ code to allow ledstrips to fade in and out on movement on the stairs
 1. attach ledtrips to stair steps
 2. conenct ledstrips to raspberry pi using breadboard, resistors, TIP120, jumpercables (or soldering) 
 3. connect the HC-SR05 PiR sensors to the raspberry pi
+4. adjust gpio ports and prefered colors in variables.py
+5. install scripts
+6. add check.sh to crontab
+7. walk down the stairs  
 
-### Requirements:
+### Software Requirements:
+python 2.7
+pigpiod pigs (http://abyz.co.uk/rpi/pigpio/pigs.html)
+a lot of thigs i probably forgot
+
+### Hardware Requirements:
 
 Stairs
 5050 RGBWW Led Strip
