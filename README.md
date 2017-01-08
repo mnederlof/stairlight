@@ -1,5 +1,7 @@
 # stairlight
 code to allow ledstrips to fade in and out on movement on the stairs
+
+first of all, the video! https://www.youtube.com/watch?v=OHU5veO76uQ
 ## Setup
 
 1. attach ledtrips to stair steps
