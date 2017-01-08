@@ -54,6 +54,27 @@ def fade(trede, direction, step, delay=0):
       call(["pigs", "p "+trede+" "+f])
       time.sleep(delay)
 
+def fix(state):
+  if state == 'off':
+    for signal in (4,5,6,7,8,9,10,11,13,15,17,18,19):
+      calc = 0
+      value = str(calc + 1)
+      channel = str(signal)
+      print 'applying off fix'
+      call(["pigs", "p "+channel+" "+value])
+      value = str(calc)
+      call(["pigs", "p "+channel+" "+value])
+  if state == 'on':
+    for signal in (4,5,6,7,8,9,10,11,13,15,17,18,19):
+      calc = valw
+      value = str(calc + 1)
+      channel = str(signal)
+      print 'applying on fix'
+      call(["pigs", "p "+channel+" "+value])
+      value = str(calc)
+      call(["pigs", "p "+channel+" "+value])
+
+
 def up_to_down():
   # This function starts the leds from down to up
   print "activating boven naar beneden"
@@ -108,6 +129,7 @@ def up_to_down():
   p11.join()
   p12.join()
   p13.join()
+  fix('on')
   fade(rgbr, 'on', valr)
   fade(rgbg, 'on', valg)
   fade(rgbb, 'on', valb)
@@ -181,6 +203,7 @@ def down_to_up():
   p11.join()
   p12.join()
   p13.join()
+  fix('on')
   fade(rgbr, 'on', valr)
   fade(rgbg, 'on', valg)
   fade(rgbb, 'on', valb)
@@ -255,6 +278,7 @@ def shutdown_to_up():
   p11.join()
   p12.join()
   p13.join()
+  fix('off')
   fade(rgbr, 'off', valr)
   fade(rgbg, 'off', valg)
   fade(rgbb, 'off', valb)
@@ -313,6 +337,7 @@ def shutup_to_down():
   p11.join()
   p12.join()
   p13.join()
+  fix('off')
   fade(rgbr, 'off', valr)
   fade(rgbg, 'off', valg)
   fade(rgbb, 'off', valb)
