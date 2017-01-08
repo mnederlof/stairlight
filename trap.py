@@ -41,7 +41,7 @@ def fade(trede, direction, step, delay=0):
     #step=step[0::3]
     for i in (step):
       f=str(i)
-      print i
+      #print i
       call(["pigs", "p "+trede+" "+f])
       time.sleep(delay)
   else:
@@ -50,7 +50,7 @@ def fade(trede, direction, step, delay=0):
     #step=-step
     for i in (step) + [0]:
       f=str(i)
-      print i
+      #print i
       call(["pigs", "p "+trede+" "+f])
       time.sleep(delay)
 
@@ -342,6 +342,10 @@ def shutup_to_down():
   fade(rgbg, 'off', valg)
   fade(rgbb, 'off', valb)
 
+def killshutdown():
+  print "Detected motion, killing shutdown"
+  pshut.terminate()
+
 # -----------------------
 # Main Script
 # -----------------------
@@ -351,21 +355,17 @@ print "Motion Detection"
 try:
   while True:
     if GPIO.input(PIRT_PIN):
-      print "kleiner"
+      print "triggered motion top"
       logging.info('triggered motion top')
       up_to_down()
       pshut = Process(target=shutup_to_down, args=())
       pshut.start()
       while pshut.is_alive():
         if GPIO.input(PIRB_PIN):
-          print "Detected motion, killing shutdown"
-          pshut.terminate()
-        else:
-          print "nobody on tree1"
+          killshutdown()
         if GPIO.input(PIRT_PIN):
-          print "Detected motion, killing shutdown"
-          pshut.terminate()
-        print " JEEJ DOIG VERY MUCH STUFF"
+          killshutdown()
+        print "no motion noticed while shutting down"
         time.sleep(wait)
     if GPIO.input(PIRB_PIN):
       print "kleiner"
@@ -375,13 +375,10 @@ try:
       pshut.start()
       while pshut.is_alive():
         if GPIO.input(PIRB_PIN):
-          print "Detected motion, killing shutdown"
-          pshut.terminate()
-        else:
-          print "nobody on tree1"
+          killshutdown()
         if GPIO.input(PIRT_PIN):
-          print "Detected motion, killing shutdown"
-          pshut.terminate()
+          killshutdown()
+        print "no motion noticed while shutting down"
         time.sleep(wait)
     logging.info('no motion noticed')
     time.sleep(wait)
